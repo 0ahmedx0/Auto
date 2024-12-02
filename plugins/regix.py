@@ -57,7 +57,7 @@ async def pub_(bot, message):
     await db.add_frwd(user)
     await send(client, user, "<b>ғᴏʀᴡᴀʀᴅɪɴɢ sᴛᴀʀᴛᴇᴅ <a href=https://t.me/dev_gagan>Dev Gagan</a></b>")
     sts.add(time=True)
-    sleep = 1 if _bot['is_bot'] else 10
+    sleep = 1 if _bot['is_bot'] else 4
     await msg_edit(m, "<code>Processing...</code>") 
     temp.IS_FRWD_CHAT.append(i.TO)
     temp.lock[user] = locked = True
@@ -96,7 +96,7 @@ async def pub_(bot, message):
                         or completed <= 100): 
                       await forward(client, MSG, m, sts, protect)
                       sts.add('total_files', notcompleted)
-                      await asyncio.sleep(10)
+                      await asyncio.sleep(4)
                       MSG = []
                 else:
                    new_caption = custom_caption(message, caption)
@@ -178,7 +178,7 @@ async def msg_edit(msg, text, button=None, wait=None):
         
 async def edit(msg, title, status, sts):
    i = sts.get(full=True)
-   status = 'Forwarding' if status == 10 else f"Sleeping {status} s" if str(status).isnumeric() else status
+   status = 'Forwarding' if status == 4 else f"Sleeping {status} s" if str(status).isnumeric() else status
    percentage = "{:.0f}".format(float(i.fetched)*100/float(i.total))
    
    now = time.time()
