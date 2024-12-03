@@ -1,27 +1,11 @@
 from bot import Bot
-from flask import Flask
-import threading
+import os
 
-# إنشاء تطبيق Flask
-app = Flask(__name__)
-
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
-
-# تشغيل Flask في خيط منفصل
-def run_flask():
-    app.run(host='0.0.0.0', port=8080)
-
-# إنشاء وتشغيل البوت
-bot = Bot()
-
-def run_bot():
-    bot.run()
-
+# جعل التطبيق يعمل دون تشغيل خادم فعلًا
 if __name__ == "__main__":
-    # تشغيل Flask في خيط منفصل
-    threading.Thread(target=run_flask).start()
-    
+    # تعيين متغير بيئة لإيهام Render أن الخدمة تحتوي على خادم
+    os.environ["PORT"] = "8080"  # تعيين المنفذ الذي يتوقعه Render
+
     # تشغيل البوت
-    run_bot()
+    bot = Bot()
+    bot.run()
